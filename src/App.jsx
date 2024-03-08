@@ -3,7 +3,7 @@ import Die from "./Components/Die"
 import { nanoid } from "nanoid";
 import Confetti from 'react-confetti'
 function App() {
-   
+  const[diceRollCount, setDiceRollCount] = React.useState(0);
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   
@@ -36,6 +36,9 @@ function App() {
 
   function rollDice()
   {
+    setDiceRollCount((preValue)=>{
+      return  preValue+1;
+    })
     setDice(
       (preValue) =>{
         return preValue.map(
@@ -75,6 +78,7 @@ function App() {
   }
   return (
    <main>
+    {diceRollCount ? <p className="roll-count">Dice Rolls: {diceRollCount}</p> : ""}
     <h1 className="title">Tenzies</h1>
     <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
     <div className="dice-container">
