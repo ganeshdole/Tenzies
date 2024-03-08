@@ -69,7 +69,9 @@ function App() {
 
   function newGame()
   {
+    setTenzies(false);
     setDice(allNewDice())
+
   }
   return (
    <main>
